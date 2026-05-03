@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oferta Especial — Acesso Completo</title>
+  <meta name="description" content="Oferta especial de acesso completo com vídeo, bônus e atualizações." />
+  <style>
+    :root {
+      --bg: #030303;
+      --bg-soft: #090606;
+      --card: #0d0b0b;
+      --card-2: #130909;
+      --red: #ff2b2b;
+      --red-dark: #8b0f0f;
+      --green: #36ff7b;
+      --text: #ffffff;
+      --muted: #b9b0b0;
+      --soft: #6f6666;
+      --border: rgba(255, 43, 43, 0.28);
+      --glow: 0 0 34px rgba(255, 43, 43, 0.28);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(130, 0, 0, .22), transparent 38%),
+        radial-gradient(circle at 90% 55%, rgba(255, 43, 43, .09), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    img, video { max-width: 100%; display: block; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255, 43, 43, .16), rgba(80, 0, 0, .24));
+      color: #ffb1b1;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      box-shadow: 0 0 18px rgba(255, 43, 43, .15);
+    }
+
+    .hero {
+      padding: 38px 0 58px;
+      border-bottom: 1px solid rgba(255, 43, 43, .12);
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 20%, transparent 80%, rgba(255,43,43,.04));
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 58px;
+      align-items: center;
+    }
+
+    .video-card {
+      position: relative;
+      max-width: 390px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 43, 43, .48);
+      border-radius: 30px;
+      padding: 10px;
+      background: linear-gradient(180deg, rgba(255, 43, 43, .18), rgba(255,255,255,.02));
+      box-shadow: var(--glow), 0 25px 70px rgba(0,0,0,.65);
+    }
+
+    .video-frame {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      overflow: hidden;
+      border-radius: 23px;
+      background:
+        linear-gradient(135deg, rgba(255,43,43,.14), rgba(255,255,255,.02)),
+        #151010;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .video-frame video,
+    .video-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      text-align: center;
+      color: var(--muted);
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255,43,43,.28), transparent 36%),
+        linear-gradient(180deg, #1a1010, #070606);
+    }
+
+    .play-icon {
+      width: 72px;
+      height: 72px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 43, 43, .92);
+      box-shadow: 0 0 30px rgba(255,43,43,.6);
+      margin-bottom: 18px;
+      color: #fff;
+      font-size: 30px;
+      padding-left: 5px;
+    }
+
+    .top-ribbon {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 43, 43, .92);
+      color: white;
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .sound-pill {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 2;
+      white-space: nowrap;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.68);
+      border: 1px solid rgba(255,255,255,.14);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-copy h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(38px, 5vw, 76px);
+      line-height: .94;
+      letter-spacing: -.04em;
+      margin: 20px 0 18px;
+    }
+
+    .hero-copy h1 span {
+      color: var(--red);
+      font-style: italic;
+      text-shadow: 0 0 22px rgba(255,43,43,.32);
+    }
+
+    .hero-copy .lead {
+      max-width: 640px;
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.55;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .price-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 24px 0 30px;
+    }
+
+    .old-price {
+      color: #8d8585;
+      font-weight: 800;
+      text-decoration: line-through;
+      font-size: 18px;
+    }
+
+    .new-price {
+      color: var(--green);
+      font-size: clamp(48px, 6vw, 78px);
+      font-weight: 950;
+      letter-spacing: -.06em;
+      text-shadow: 0 0 30px rgba(54,255,123,.32);
+    }
+
+    .once {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(54,255,123,.1);
+      color: #b9ffc9;
+      border: 1px solid rgba(54,255,123,.24);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 520px;
+      min-height: 64px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ff4646, #ff1515);
+      color: white;
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      box-shadow: 0 0 28px rgba(255,43,43,.55), 0 16px 34px rgba(255,43,43,.24);
+      border: 1px solid rgba(255,255,255,.18);
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    .cta:hover { transform: translateY(-2px) scale(1.01); filter: brightness(1.08); }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+      color: #cfc7c7;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .trust-row span {
+      padding: 8px 10px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+    }
+
+    section { padding: 68px 0; }
+
+    .section-title {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 36px;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(31px, 4vw, 52px);
+      line-height: 1.02;
+      letter-spacing: -.035em;
+      margin: 15px 0 10px;
+    }
+
+    .section-title h2 span { color: var(--red); font-style: italic; }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 210px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,43,43,.08), rgba(255,255,255,.025));
+      box-shadow: 0 15px 36px rgba(0,0,0,.32);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255,43,43,.16);
+      border: 1px solid rgba(255,43,43,.32);
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .bonus-section {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,43,43,.14), transparent 44%),
+        linear-gradient(180deg, rgba(255,43,43,.035), rgba(255,43,43,.01));
+      border-top: 1px solid rgba(255,43,43,.12);
+      border-bottom: 1px solid rgba(255,43,43,.12);
+    }
+
+    .bonus-box {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 28px;
+      align-items: center;
+      border: 1px solid rgba(255,43,43,.38);
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,43,43,.12), rgba(255,255,255,.025));
+      padding: 26px;
+      box-shadow: var(--glow);
+    }
+
+    .bonus-media {
+      aspect-ratio: 4 / 5;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255,43,43,.24), transparent 38%),
+        #120b0b;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 28px;
+      color: var(--muted);
+    }
+
+    .bonus-copy h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(34px, 4.4vw, 62px);
+      line-height: .98;
+      letter-spacing: -.04em;
+      margin-bottom: 15px;
+    }
+
+    .bonus-copy h2 span { color: var(--red); font-style: italic; }
+
+    .bonus-copy p {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .bonus-list {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0;
+      list-style: none;
+    }
+
+    .bonus-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #e6dddd;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .bonus-list li::before {
+      content: "✓";
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(54,255,123,.13);
+      color: var(--green);
+      border: 1px solid rgba(54,255,123,.24);
+      font-size: 13px;
+    }
+
+    .offer-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      border: 1px solid rgba(255,43,43,.48);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(54,255,123,.13), transparent 30%),
+        linear-gradient(180deg, rgba(255,43,43,.1), rgba(255,255,255,.025));
+      padding: 34px;
+      box-shadow: var(--glow), 0 28px 80px rgba(0,0,0,.55);
+      text-align: center;
+    }
+
+    .offer-wrap h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.02;
+      margin: 16px 0 12px;
+    }
+
+    .offer-wrap p {
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .price-box { margin: 22px 0 26px; }
+
+    .mini-note {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 15px;
+      border-radius: 12px;
+      background: rgba(255,43,43,.11);
+      border: 1px solid rgba(255,43,43,.28);
+      color: #ffc7c7;
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .guarantee {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .guarantee div {
+      padding: 14px 10px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: #d7d0d0;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .footer {
+      padding: 34px 0 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,43,43,.1);
+      color: #746c6c;
+      font-size: 12px;
+    }
+
+    .sticky-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      padding: 10px 14px;
+      background: rgba(3,3,3,.86);
+      border-top: 1px solid rgba(255,43,43,.24);
+      backdrop-filter: blur(12px);
+      display: none;
+    }
+
+    .sticky-inner {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sticky-price strong {
+      display: block;
+      color: var(--green);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .sticky-price small {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .sticky-bar .cta {
+      max-width: 300px;
+      min-height: 48px;
+      font-size: 13px;
+    }
+
+    /* COMO TROCAR MÍDIAS:
+      1) Coloque seus vídeos na mesma pasta deste HTML no Git.
+      2) Vídeo do topo: video1.mp4
+      3) Vídeo do bônus: video2.mp4
+      4) LINK DO CHECKOUT: troque todos os href="#checkout" pelo seu link da Cakto/Kirvano.
+    */
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .bonus-box { grid-template-columns: 1fr; }
+      .hero-copy { text-align: center; }
+      .hero-copy .lead { margin-left: auto; margin-right: auto; }
+      .price-line { justify-content: center; }
+      .trust-row { justify-content: center; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+      .bonus-copy { text-align: center; }
+      .bonus-list { text-align: left; max-width: 560px; margin-left: auto; margin-right: auto; }
+      .bonus-media { max-width: 430px; width: 100%; margin: 0 auto; }
+    }
+
+    @media (max-width: 620px) {
+      body { padding-bottom: 80px; }
+      .hero { padding-top: 26px; }
+      section { padding: 52px 0; }
+      .video-card { max-width: 310px; border-radius: 25px; }
+      .video-frame { border-radius: 19px; }
+      .hero-grid { gap: 34px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .bonus-box, .offer-wrap { padding: 20px; border-radius: 24px; }
+      .guarantee { grid-template-columns: 1fr; }
+      .sticky-bar { display: block; }
+      .sticky-inner { gap: 8px; }
+      .sticky-bar .cta { max-width: 190px; min-height: 46px; font-size: 12px; padding: 0 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="video-card">
+        <div class="video-frame">
+          <div class="top-ribbon">Amostra em vídeo</div>
+
+          <!-- Coloque o arquivo video1.mp4 na mesma pasta deste HTML no Git -->
+          <video controls playsinline preload="metadata">
+            <source src="./video1.mp4" type="video/mp4" />
+          </video>
+
+          <div class="sound-pill">▶ Clique para ver a amostra</div>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="badge">🔥 Oferta única depois da compra</div>
+        <h1>Quer liberar o <span>pacote completo</span> agora?</h1>
+        <p class="lead">
+          Você já garantiu seu acesso principal. Agora pode adicionar uma experiência extra com vídeo completo,
+          atualizações e bônus surpresa por um valor especial liberado somente nesta etapa.
+        </p>
+
+        <div class="price-line">
+          <span class="old-price">R$ 79,90</span>
+          <strong class="new-price">R$ 29,90</strong>
+          <span class="once">pagamento único</span>
+        </div>
+
+        <a class="cta" href="#checkout">🔥 Sim, quero adicionar ao meu acesso</a>
+
+        <div class="trust-row">
+          <span>✅ Acesso imediato</span>
+          <span>🔒 Compra segura</span>
+          <span>🎁 Bônus liberado hoje</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <div class="badge">+ conteúdo liberado</div>
+        <h2>O que você recebe nessa <span>oferta especial</span></h2>
+        <p>Uma etapa extra para quem quer ver mais, sem ficar preso apenas nas prévias.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon">🎬</div>
+          <h3>Meu ensaio completo em vídeo</h3>
+          <p>Você vê tudo do começo ao fim, sem prévias cortadas e sem partes escondidas.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🔓</div>
+          <h3>Vídeos exclusivos no acesso</h3>
+          <p>Momentos mais naturais e reservados, liberados somente para quem entra.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">⚡</div>
+          <h3>Atualizações novas</h3>
+          <p>Sempre que eu liberar algo novo dentro dessa área, você recebe no seu acesso.</p>
+        </article>
+
+        <article class="card">
+          <div class="icon">🎁</div>
+          <h3>Bônus surpresa de hoje</h3>
+          <p>Um conteúdo extra liberado junto com seu acesso para deixar o pacote ainda melhor.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bonus-section">
+    <div class="container">
+      <div class="bonus-box">
+        <div class="bonus-media">
+          <!-- Coloque o arquivo video2.mp4 na mesma pasta deste HTML no Git -->
+          <video controls playsinline preload="metadata">
+            <source src="./video2.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="bonus-copy">
+          <div class="badge">bônus desbloqueado</div>
+          <h2>Entrando agora, você leva um <span>bônus surpresa</span></h2>
+          <p>
+            Esse bônus não aparece na oferta principal. Ele foi criado para aumentar o valor do acesso e fazer
+            quem entrou hoje receber algo a mais imediatamente.
+          </p>
+
+          <ul class="bonus-list">
+            <li>Conteúdo extra liberado junto com a compra.</li>
+            <li>Disponível somente nesta oferta de upsell.</li>
+            <li>Entrega imediata após a confirmação do pagamento.</li>
+            <li>Ideal para quem quer aproveitar tudo de uma vez.</li>
+          </ul>
+
+          <a class="cta" href="#checkout">🎁 Quero garantir com bônus agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="checkout">
+    <div class="container">
+      <div class="offer-wrap">
+        <div class="badge">última chance nesta etapa</div>
+        <h2>Adicionar pacote completo ao meu acesso</h2>
+        <p>
+          Depois que sair desta página, essa condição pode não aparecer novamente no mesmo valor.
+          Aproveite agora por apenas:
+        </p>
+
+        <div class="price-box">
+          <div class="old-price">De R$ 79,90</div>
+          <div class="new-price">R$ 29,90</div>
+          <div class="mini-note">🔥 Oferta especial liberada somente agora</div>
+        </div>
+
+        <!-- TROQUE O href ABAIXO PELO LINK DO SEU CHECKOUT -->
+        <a class="cta" href="https://SEU-LINK-DE-CHECKOUT-AQUI.com">LIBERAR PACOTE COMPLETO AGORA</a>
+
+        <div class="guarantee">
+          <div>🔐 Pagamento seguro</div>
+          <div>⚡ Acesso imediato</div>
+          <div>🎁 Bônus incluso</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <strong>Oferta especial</strong><br />
+      Esta página apresenta uma oferta complementar opcional. O acesso é liberado após confirmação do pagamento.
+    </div>
+  </footer>
+
+  <div class="sticky-bar">
+    <div class="sticky-inner">
+      <div class="sticky-price">
+        <small>Adicionar por</small>
+        <strong>R$ 29,90</strong>
+      </div>
+      <a class="cta" href="#checkout">Liberar agora</a>
+    </div>
+  </div>
+</body>
+</html>
